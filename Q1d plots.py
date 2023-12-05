@@ -1,31 +1,33 @@
-# Sample percentage biases came out suspiciously high for all 5 estimators, so here are the plots 
-# to see where/if I went wrong anywhere with the functions
+#Q1d D
 
-# TEST TO SEE IF FUNCTIONS ARE WRITTEN WRONG
-realisation1 = simulate_1a(6/64, 26/64, 0.8, 0.8, 64, 1)
-period = periodogram(realisation1)
-pd_1 = direct(realisation1, 0.05)
-pd_2 = direct(realisation1, 0.1)
-pd_3 = direct(realisation1, 0.25)
-pd_4 = direct(realisation1, 0.5)
-freqs = fft.fftfreq(64)
-shifted = fft.fftshift(freqs)
+# f = 6/64
+plt.plot(np.arange(0.81, 1, 0.01), pb_f1[0::5], 'b', label='periodogram')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f1[1::5], 'r', label='tapering p = 0.05')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f1[2::5], 'g', label='tapering p = 0.1')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f1[3::5], 'y', label='tapering p = 0.25')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f1[4::5], 'p', label='tapering p = 0.5')
+plt.legend()
 
-# true values
-true = S_AR(shifted, [phi_1, phi_2, phi_3, phi_4], 1)
-plt.plot(shifted, true)
+# f = 8/64
+plt.plot(np.arange(0.81, 1, 0.01), pb_f2[0::5], 'b', label='periodogram')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f2[1::5], 'r', label='tapering p = 0.05')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f2[2::5], 'g', label='tapering p = 0.1')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f2[3::5], 'y', label='tapering p = 0.25')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f2[4::5], 'p', label='tapering p = 0.5')
+plt.legend()
 
-# periodogram
-plt.plot(shifted, period)
+# f = 16/64
+plt.plot(np.arange(0.81, 1, 0.01), pb_f3[0::5], 'b', label='periodogram')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f3[1::5], 'r', label='tapering p = 0.05')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f3[2::5], 'g', label='tapering p = 0.1')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f3[3::5], 'y', label='tapering p = 0.25')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f3[4::5], 'p', label='tapering p = 0.5')
+plt.legend()
 
-# tapering p=0.05
-plt.plot(shifted, pd_1)
-
-# tapering p=0.1
-plt.plot(shifted,pd_2)
-
-#tapering p=0.25
-plt.plot(shifted, pd_3)
-
-#tapering p=0.5
-plt.plot(shifted, pd_4)
+# f = 26/64
+plt.plot(np.arange(0.81, 1, 0.01), pb_f4[0::5], 'b', label='periodogram')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f4[1::5], 'r', label='tapering p = 0.05')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f4[2::5], 'g', label='tapering p = 0.1')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f4[3::5], 'y', label='tapering p = 0.25')
+plt.plot(np.arange(0.81, 1, 0.01), pb_f4[4::5], 'p', label='tapering p = 0.5')
+plt.legend()
