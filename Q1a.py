@@ -12,7 +12,7 @@ N = 100
 
 ## Parameters inside iteration; found using 
 phi_1 = 2 * r_1 * cos(2*pi*f_1) + 2 * r_2 * cos(2*pi*f_2)
-phi_2 = -(r_1 + r_2 + 4 * r_1 * r_2 * cos(2*pi*f_1) * cos(2*pi*f_2))
+phi_2 = -(r_1**2 + r_2**2 + 4 * r_1 * r_2 * cos(2*pi*f_1) * cos(2*pi*f_2))
 phi_3 = 2 * r_1 * r_2 * (r_1 * cos(2*pi*f_2) + r_2 * cos(2*pi*f_1))
 phi_4 = -((r_1*r_2)** 2)
 
