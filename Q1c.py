@@ -22,9 +22,9 @@ def direct(X, p):
     pN = math.floor(p * N)
     
     # calculate normalising constant C
-    bound1 = [(1 - math.cos(2*np.pi*t/pN+1))**2 for t in range(1, math.ceil(pN/2))]
+    bound1 = [(1 - math.cos(2*np.pi*t/pN+1))**2 for t in range(1, math.floor(pN/2)+1)]
     sum1 = sum(bound1)
-    C = math.sqrt(1/(sum1/2 + N-len(bound1)))
+    C = math.sqrt(1/(sum1/2 + N-2*len(bound1)))
     
     # define h_t & the tapered time series
     Y = []
@@ -37,12 +37,7 @@ def direct(X, p):
             h = C/2 * (1 - math.cos(2*np.pi*(N-t)/(pN+1)))
         Y.append(h * X[t])
     
-    fft_Y = fft.fft(Y)
-    fft_Y = fft.fftshift(fft_Y) # shift the transform to centre 0 frequency
-
-    ret = []
-    for i in range(N):
-        ret.append(fft_Y[i].real**2 + fft_Y[i].imag**2) # find direct spectral estimate
-    
+    x = periodogram(Y)
+    ret = [N*i for i in x]
     return ret
     
